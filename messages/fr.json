@@ -1,0 +1,257 @@
+{
+  "metadata": {
+    "title": "Crackoï — Tirages photo d'art par Eric Lamblin",
+    "description": "Découvrez les tirages photo d'art d'Eric Lamblin, photographe sous-marin à La Réunion. Baleines, dauphins, paysages — impressions qualité musée."
+  },
+  "nav": {
+    "home": "Accueil",
+    "gallery": "Galerie",
+    "book": "Le Livre",
+    "about": "À propos",
+    "contact": "Contact",
+    "cart": "Panier",
+    "account": "Mon compte"
+  },
+  "hero": {
+    "cta": "Découvrir",
+    "slideCounter": "{current} / {total}"
+  },
+  "homepage": {
+    "storytelling": {
+      "block1": {
+        "heading": "Eric Lamblin, photographe de l'océan",
+        "text": "Depuis plus de 20 ans, Eric Lamblin capture la beauté sauvage de l'océan Indien. Installé à La Réunion, il plonge au cœur des eaux pour immortaliser des instants rares : le regard d'une baleine à bosse, la danse d'un banc de dauphins, la lumière qui transperce la surface."
+      },
+      "block2": {
+        "heading": "La Réunion, terre de contrastes",
+        "text": "Entre volcans et récifs coralliens, La Réunion offre un terrain de jeu unique pour la photographie. Des profondeurs marines aux sommets du Piton des Neiges, chaque image raconte une histoire de nature préservée et de rencontres extraordinaires."
+      },
+      "block3": {
+        "heading": "Une démarche artistique authentique",
+        "text": "Chaque tirage est une œuvre à part entière. Eric sélectionne méticuleusement ses images, privilégiant l'émotion et la connexion avec le sujet. Ses photographies ne sont pas de simples clichés — elles sont des fenêtres ouvertes sur un monde que peu ont la chance de voir."
+      },
+      "block4": {
+        "heading": "Dans l'intimité des baleines",
+        "text": "Chaque année, les baleines à bosse migrent vers les eaux chaudes de La Réunion pour donner naissance à leurs petits. Eric les accompagne, les observe, les photographie avec un respect profond. Ces images témoignent d'une relation de confiance unique entre l'homme et l'animal."
+      }
+    },
+    "categories": {
+      "heading": "Collections",
+      "subtitle": "Explorez les univers photographiques d'Eric Lamblin"
+    },
+    "featured": {
+      "heading": "Tirages les plus appréciés",
+      "subtitle": "Les photos préférées de nos clients",
+      "cta": "Voir toute la collection",
+      "priceFrom": "À partir de {price} €"
+    },
+    "mockupPreview": {
+      "heading": "Votre photo chez vous",
+      "text": "Chaque tirage est imprimé sur du papier Fine Art qualité musée. Visualisez le rendu directement dans votre intérieur grâce à notre outil de prévisualisation.",
+      "cta": "Découvrez nos tirages"
+    },
+    "book": {
+      "heading": "Dans l'intimité des baleines",
+      "text": "Le livre d'Eric Lamblin — un voyage photographique exceptionnel au cœur de l'océan Indien, à la rencontre des baleines à bosse de La Réunion.",
+      "cta": "En savoir plus"
+    },
+    "reassurance": {
+      "quality": "Tirage Fine Art qualité musée",
+      "shipping": "Livraison soignée et sécurisée",
+      "limited": "Éditions limitées numérotées",
+      "satisfaction": "Satisfaction garantie"
+    }
+  },
+  "product": {
+    "addToCart": "Ajouter au panier",
+    "added": "Ajouté !",
+    "selectSize": "Choisir une taille",
+    "tabPhoto": "Photo",
+    "tabMockup": "Visualiser chez vous",
+    "location": "Lieu",
+    "date": "Date",
+    "camera": "Appareil",
+    "relatedPhotos": "Vous aimerez aussi",
+    "dimensions": "{width} × {height} cm",
+    "fineArt": "Tirage Fine Art sur papier Hahnemühle"
+  },
+  "cart": {
+    "title": "Panier",
+    "empty": "Votre panier est vide",
+    "emptySubtitle": "Explorez notre galerie pour découvrir des tirages photo d'exception.",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "shippingNote": "Calculée à l'étape suivante",
+    "total": "Total",
+    "checkout": "Commander",
+    "continueShopping": "Continuer mes achats",
+    "remove": "Retirer",
+    "quantity": "Quantité",
+    "promoCode": "Code promo",
+    "apply": "Appliquer",
+    "summary": "Récapitulatif"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "subtitle": "Toutes les photographies d'Eric Lamblin disponibles en tirages d'art",
+    "all": "Toutes",
+    "noResults": "Aucune photo dans cette catégorie.",
+    "viewPhoto": "Voir le tirage"
+  },
+  "checkout": {
+    "title": "Commande",
+    "shipping": "Adresse de livraison",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "addressLine2": "Complément",
+    "city": "Ville",
+    "postalCode": "Code postal",
+    "country": "Pays",
+    "pay": "Payer",
+    "summary": "Récapitulatif",
+    "guestCheckout": "Commander sans compte",
+    "loginCheckout": "Se connecter pour commander"
+  },
+  "orderConfirmation": {
+    "title": "Commande confirmée !",
+    "text": "Merci pour votre achat. Votre commande a bien été enregistrée.",
+    "orderNumber": "Numéro de commande",
+    "backHome": "Retour à l'accueil"
+  },
+  "book": {
+    "title": "Dans l'intimité des baleines",
+    "subtitle": "Le livre photographique d'Eric Lamblin",
+    "description": "Un voyage exceptionnel au cœur de l'océan Indien, à la rencontre des baleines à bosse de La Réunion. À travers plus de 200 photographies époustouflantes, Eric Lamblin nous plonge dans l'intimité de ces géants des mers.",
+    "description2": "Chaque page révèle la majesté de ces créatures fascinantes, capturées dans leur habitat naturel avec une proximité et une sensibilité rares. Des images qui témoignent de 20 années d'exploration et de passion.",
+    "details": "208 pages — Format 30×24 cm — Couverture rigide",
+    "pages": "208 pages",
+    "format": "Format 30 x 24 cm",
+    "cover": "Couverture rigide",
+    "language": "Textes français / anglais",
+    "cta": "Commander le livre",
+    "featuredTitle": "Quelques pages du livre",
+    "featuredSubtitle": "Un aperçu des photographies qui composent cet ouvrage unique"
+  },
+  "about": {
+    "title": "Eric Lamblin",
+    "subtitle": "Photographe sous-marin — La Réunion",
+    "bio1": "Depuis plus de 20 ans, Eric Lamblin explore les eaux de l'océan Indien, appareil en main. Installé à La Réunion, il est devenu l'un des photographes sous-marins les plus reconnus de l'île.",
+    "bio2": "Spécialisé dans la photographie de baleines à bosse et de la vie marine, Eric capture des instants d'une rare beauté. Ses images témoignent d'une patience infinie et d'un respect profond pour le monde sous-marin.",
+    "bio3": "Son travail a été publié dans de nombreux magazines et exposé à travers le monde. Il est également l'auteur du livre \"Dans l'intimité des baleines\".",
+    "cta": "Découvrir ses tirages"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Une question sur un tirage, une commande ou un projet ? N'hésitez pas à me contacter.",
+    "name": "Nom",
+    "email": "Email",
+    "subject": "Sujet",
+    "message": "Message",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "sent": "Message envoyé !",
+    "sentText": "Merci, je vous répondrai dans les meilleurs délais.",
+    "backToForm": "Envoyer un autre message",
+    "infoTitle": "Informations",
+    "location": "La Réunion, France",
+    "emailAddress": "lamblineric@gmail.com",
+    "responseTime": "Réponse sous 48h"
+  },
+  "auth": {
+    "login": "Connexion",
+    "register": "Créer un compte",
+    "forgotPassword": "Mot de passe oublié ?",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "loginCta": "Se connecter",
+    "registerCta": "Créer mon compte",
+    "resetCta": "Réinitialiser",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Déjà un compte ?",
+    "resetText": "Entrez votre email pour recevoir un lien de réinitialisation."
+  },
+  "account": {
+    "title": "Mon compte",
+    "profile": "Profil",
+    "orders": "Mes commandes",
+    "logout": "Déconnexion",
+    "noOrders": "Vous n'avez pas encore de commandes.",
+    "noOrdersSubtitle": "Vos commandes apparaîtront ici une fois passées.",
+    "orderDate": "Commandé le",
+    "orderStatus": "Statut",
+    "email": "Email",
+    "name": "Nom",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "memberSince": "Membre depuis",
+    "viewOrders": "Voir mes commandes",
+    "orderNumber": "N° commande",
+    "orderTotal": "Total",
+    "orderItems": "Articles",
+    "quantity": "Qté",
+    "unitPrice": "Prix unitaire",
+    "size": "Taille",
+    "backToAccount": "Retour au compte",
+    "browseGallery": "Parcourir la galerie"
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Tableau de bord",
+    "photos": "Photos",
+    "categories": "Catégories",
+    "orders": "Commandes",
+    "promoCodes": "Codes promo",
+    "shipping": "Livraison",
+    "totalPhotos": "Photos",
+    "totalOrders": "Commandes",
+    "pendingOrders": "En attente",
+    "paidOrders": "Payées",
+    "processingOrders": "En préparation",
+    "recentOrders": "Commandes récentes",
+    "revenue": "Chiffre d'affaires",
+    "addPhoto": "Ajouter une photo",
+    "photoTitle": "Titre",
+    "published": "Publié",
+    "draft": "Brouillon",
+    "priceRange": "Prix",
+    "actions": "Actions",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "categoryName": "Nom",
+    "categorySlug": "Slug",
+    "photoCount": "Nb photos",
+    "displayOrder": "Ordre",
+    "orderNumber": "N° commande",
+    "customer": "Client",
+    "date": "Date",
+    "status": "Statut",
+    "total": "Total",
+    "promoCode": "Code",
+    "discountType": "Type",
+    "discountValue": "Valeur",
+    "usageCount": "Utilisations",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "percentage": "Pourcentage",
+    "fixedAmount": "Montant fixe",
+    "noData": "Aucune donnée à afficher.",
+    "viewDetails": "Voir le détail",
+    "thumbnail": "Image",
+    "backToSite": "Retour au site"
+  },
+  "footer": {
+    "rights": "© {year} Crackoï — Eric Lamblin. Tous droits réservés.",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "cgv": "CGV",
+    "navigation": "Navigation",
+    "collections": "Collections",
+    "followUs": "Suivez-nous"
+  }
+}

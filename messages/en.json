@@ -1,0 +1,257 @@
+{
+  "metadata": {
+    "title": "Crackoï — Fine Art Prints by Eric Lamblin",
+    "description": "Discover fine art prints by Eric Lamblin, underwater photographer in Réunion Island. Whales, dolphins, landscapes — museum-quality prints."
+  },
+  "nav": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "book": "The Book",
+    "about": "About",
+    "contact": "Contact",
+    "cart": "Cart",
+    "account": "My Account"
+  },
+  "hero": {
+    "cta": "Discover",
+    "slideCounter": "{current} / {total}"
+  },
+  "homepage": {
+    "storytelling": {
+      "block1": {
+        "heading": "Eric Lamblin, Ocean Photographer",
+        "text": "For over 20 years, Eric Lamblin has been capturing the wild beauty of the Indian Ocean. Based in Réunion Island, he dives into the heart of the waters to immortalize rare moments: the gaze of a humpback whale, the dance of a pod of dolphins, the light piercing through the surface."
+      },
+      "block2": {
+        "heading": "Réunion Island, Land of Contrasts",
+        "text": "Between volcanoes and coral reefs, Réunion Island offers a unique playground for photography. From the marine depths to the peaks of Piton des Neiges, every image tells a story of preserved nature and extraordinary encounters."
+      },
+      "block3": {
+        "heading": "An Authentic Artistic Approach",
+        "text": "Each print is a work of art in its own right. Eric meticulously selects his images, favoring emotion and connection with the subject. His photographs are not mere snapshots — they are windows opening onto a world that few are lucky enough to see."
+      },
+      "block4": {
+        "heading": "In the Intimacy of Whales",
+        "text": "Every year, humpback whales migrate to the warm waters of Réunion Island to give birth. Eric accompanies them, observes them, photographs them with deep respect. These images bear witness to a unique relationship of trust between man and animal."
+      }
+    },
+    "categories": {
+      "heading": "Collections",
+      "subtitle": "Explore Eric Lamblin's photographic worlds"
+    },
+    "featured": {
+      "heading": "Most Popular Prints",
+      "subtitle": "Our customers' favourite photos",
+      "cta": "View full collection",
+      "priceFrom": "From €{price}"
+    },
+    "mockupPreview": {
+      "heading": "Your Photo at Home",
+      "text": "Each print is produced on museum-quality Fine Art paper. Visualize the result directly in your interior with our preview tool.",
+      "cta": "Discover our prints"
+    },
+    "book": {
+      "heading": "In the Intimacy of Whales",
+      "text": "Eric Lamblin's book — an exceptional photographic journey to the heart of the Indian Ocean, meeting the humpback whales of Réunion Island.",
+      "cta": "Learn more"
+    },
+    "reassurance": {
+      "quality": "Museum-quality Fine Art print",
+      "shipping": "Careful and secure delivery",
+      "limited": "Numbered limited editions",
+      "satisfaction": "Satisfaction guaranteed"
+    }
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "added": "Added!",
+    "selectSize": "Choose a size",
+    "tabPhoto": "Photo",
+    "tabMockup": "See it at home",
+    "location": "Location",
+    "date": "Date",
+    "camera": "Camera",
+    "relatedPhotos": "You may also like",
+    "dimensions": "{width} × {height} cm",
+    "fineArt": "Fine Art print on Hahnemühle paper"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "emptySubtitle": "Browse our gallery to discover exceptional fine art prints.",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "shippingNote": "Calculated at next step",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue shopping",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "promoCode": "Promo code",
+    "apply": "Apply",
+    "summary": "Order summary"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "All of Eric Lamblin's photographs available as fine art prints",
+    "all": "All",
+    "noResults": "No photos in this category.",
+    "viewPhoto": "View print"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shipping": "Shipping address",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "addressLine2": "Apt, suite, etc.",
+    "city": "City",
+    "postalCode": "Postal code",
+    "country": "Country",
+    "pay": "Pay",
+    "summary": "Summary",
+    "guestCheckout": "Checkout as guest",
+    "loginCheckout": "Sign in to checkout"
+  },
+  "orderConfirmation": {
+    "title": "Order confirmed!",
+    "text": "Thank you for your purchase. Your order has been placed successfully.",
+    "orderNumber": "Order number",
+    "backHome": "Back to home"
+  },
+  "book": {
+    "title": "In the Intimacy of Whales",
+    "subtitle": "Eric Lamblin's photography book",
+    "description": "An exceptional journey to the heart of the Indian Ocean, meeting the humpback whales of Reunion Island. Through over 200 breathtaking photographs, Eric Lamblin immerses us in the intimacy of these ocean giants.",
+    "description2": "Each page reveals the majesty of these fascinating creatures, captured in their natural habitat with rare proximity and sensitivity. Images that bear witness to 20 years of exploration and passion.",
+    "details": "208 pages — 30x24 cm format — Hardcover",
+    "pages": "208 pages",
+    "format": "30 x 24 cm format",
+    "cover": "Hardcover",
+    "language": "French / English text",
+    "cta": "Order the book",
+    "featuredTitle": "A few pages from the book",
+    "featuredSubtitle": "A glimpse of the photographs that make up this unique work"
+  },
+  "about": {
+    "title": "Eric Lamblin",
+    "subtitle": "Underwater Photographer — Reunion Island",
+    "bio1": "For over 20 years, Eric Lamblin has explored the waters of the Indian Ocean, camera in hand. Based in Reunion Island, he has become one of the most recognized underwater photographers on the island.",
+    "bio2": "Specializing in humpback whale and marine life photography, Eric captures moments of rare beauty. His images bear witness to infinite patience and deep respect for the underwater world.",
+    "bio3": "His work has been published in numerous magazines and exhibited worldwide. He is also the author of the book \"In the Intimacy of Whales\".",
+    "cta": "Discover his prints"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "A question about a print, an order, or a project? Don't hesitate to reach out.",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "sent": "Message sent!",
+    "sentText": "Thank you, I will respond as soon as possible.",
+    "backToForm": "Send another message",
+    "infoTitle": "Information",
+    "location": "Reunion Island, France",
+    "emailAddress": "lamblineric@gmail.com",
+    "responseTime": "Response within 48h"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Create account",
+    "forgotPassword": "Forgot password?",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "loginCta": "Sign in",
+    "registerCta": "Create account",
+    "resetCta": "Reset",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "resetText": "Enter your email to receive a reset link."
+  },
+  "account": {
+    "title": "My Account",
+    "profile": "Profile",
+    "orders": "My Orders",
+    "logout": "Sign out",
+    "noOrders": "You don't have any orders yet.",
+    "noOrdersSubtitle": "Your orders will appear here once placed.",
+    "orderDate": "Ordered on",
+    "orderStatus": "Status",
+    "email": "Email",
+    "name": "Name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "address": "Address",
+    "memberSince": "Member since",
+    "viewOrders": "View my orders",
+    "orderNumber": "Order #",
+    "orderTotal": "Total",
+    "orderItems": "Items",
+    "quantity": "Qty",
+    "unitPrice": "Unit price",
+    "size": "Size",
+    "backToAccount": "Back to account",
+    "browseGallery": "Browse gallery"
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Dashboard",
+    "photos": "Photos",
+    "categories": "Categories",
+    "orders": "Orders",
+    "promoCodes": "Promo Codes",
+    "shipping": "Shipping",
+    "totalPhotos": "Photos",
+    "totalOrders": "Orders",
+    "pendingOrders": "Pending",
+    "paidOrders": "Paid",
+    "processingOrders": "Processing",
+    "recentOrders": "Recent Orders",
+    "revenue": "Revenue",
+    "addPhoto": "Add photo",
+    "photoTitle": "Title",
+    "published": "Published",
+    "draft": "Draft",
+    "priceRange": "Price",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "categoryName": "Name",
+    "categorySlug": "Slug",
+    "photoCount": "Photos",
+    "displayOrder": "Order",
+    "orderNumber": "Order #",
+    "customer": "Customer",
+    "date": "Date",
+    "status": "Status",
+    "total": "Total",
+    "promoCode": "Code",
+    "discountType": "Type",
+    "discountValue": "Value",
+    "usageCount": "Uses",
+    "active": "Active",
+    "inactive": "Inactive",
+    "percentage": "Percentage",
+    "fixedAmount": "Fixed amount",
+    "noData": "No data to display.",
+    "viewDetails": "View details",
+    "thumbnail": "Image",
+    "backToSite": "Back to site"
+  },
+  "footer": {
+    "rights": "© {year} Crackoï — Eric Lamblin. All rights reserved.",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "cgv": "Terms of sale",
+    "navigation": "Navigation",
+    "collections": "Collections",
+    "followUs": "Follow us"
+  }
+}
