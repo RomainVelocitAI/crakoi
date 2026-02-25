@@ -23,14 +23,30 @@ export default function GalleryGrid({
   showFilters = true,
 }: GalleryGridProps) {
   const t = useTranslations("gallery");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeCategories, setActiveCategories] = useState<Set<string>>(
+    new Set()
+  );
+
+  const toggleCategory = (categoryId: string) => {
+    setActiveCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(categoryId)) {
+        next.delete(categoryId);
+      } else {
+        next.add(categoryId);
+      }
+      return next;
+    });
+  };
+
+  const clearFilters = () => setActiveCategories(new Set());
 
   const filteredPhotos = useMemo(() => {
-    if (!activeCategory) return photos;
+    if (activeCategories.size === 0) return photos;
     return photos.filter((photo) =>
-      photo.categoryIds.includes(activeCategory)
+      photo.categoryIds.some((id) => activeCategories.has(id))
     );
-  }, [photos, activeCategory]);
+  }, [photos, activeCategories]);
 
   return (
     <div>
@@ -40,10 +56,10 @@ export default function GalleryGrid({
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {/* "All" tab */}
             <button
-              onClick={() => setActiveCategory(null)}
+              onClick={clearFilters}
               className={cn(
                 "relative font-mono text-xs tracking-[0.2em] uppercase px-4 py-2.5 border-b-2 transition-colors duration-300",
-                activeCategory === null
+                activeCategories.size === 0
                   ? "text-gold border-gold"
                   : "text-text-secondary border-transparent hover:text-white"
               )}
@@ -51,20 +67,23 @@ export default function GalleryGrid({
               {t("all")}
             </button>
 
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={cn(
-                  "relative font-mono text-xs tracking-[0.2em] uppercase px-4 py-2.5 border-b-2 transition-colors duration-300",
-                  activeCategory === category.id
-                    ? "text-gold border-gold"
-                    : "text-text-secondary border-transparent hover:text-white"
-                )}
-              >
-                {category.name}
-              </button>
-            ))}
+            {categories.map((category) => {
+              const isActive = activeCategories.has(category.id);
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => toggleCategory(category.id)}
+                  className={cn(
+                    "relative font-mono text-xs tracking-[0.2em] uppercase px-4 py-2.5 border-b-2 transition-colors duration-300",
+                    isActive
+                      ? "text-gold border-gold"
+                      : "text-text-secondary border-transparent hover:text-white"
+                  )}
+                >
+                  {category.name}
+                </button>
+              );
+            })}
           </div>
 
           {/* Subtle divider */}
