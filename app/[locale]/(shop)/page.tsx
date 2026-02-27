@@ -56,13 +56,32 @@ export default async function HomePage() {
     };
   });
 
+  // Build a map of first photo per category for cover fallback
+  const firstPhotoPerCategory: Record<string, string> = {};
+  const photoCountPerCategory: Record<string, number> = {};
+  const { data: allPublishedPhotos } = await supabase
+    .from("photos")
+    .select("thumbnail_url, image_url, photo_categories(category_id)")
+    .eq("is_published", true)
+    .order("created_at", { ascending: false });
+
+  (allPublishedPhotos || []).forEach((photo: any) => {
+    (photo.photo_categories || []).forEach((pc: any) => {
+      photoCountPerCategory[pc.category_id] = (photoCountPerCategory[pc.category_id] || 0) + 1;
+      if (!firstPhotoPerCategory[pc.category_id]) {
+        firstPhotoPerCategory[pc.category_id] = photo.thumbnail_url || photo.image_url;
+      }
+    });
+  });
+
   // Transform data for categories
   const categoryCards = (categories || []).map((cat) => ({
     id: cat.id,
     name: cat.name,
     slug: cat.slug,
     description: cat.description || undefined,
-    coverImageUrl: cat.cover_image_url || "",
+    coverImageUrl: cat.cover_image_url || firstPhotoPerCategory[cat.id] || "",
+    photoCount: photoCountPerCategory[cat.id] || 0,
   }));
 
   // Pick first photo for the mockup preview

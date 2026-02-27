@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { createServerClient } from "@/lib/supabase/server";
 import FadeIn from "@/components/animations/FadeIn";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
-import type { PhotoCardData } from "@/components/gallery/PhotoCard";
+import type { GalleryPhoto, GalleryCategory } from "@/components/gallery/GalleryGrid";
 
 export async function generateMetadata({
   params: { locale },
@@ -35,7 +35,7 @@ export default async function GalleryPage() {
   const { data: photos } = await supabase
     .from("photos")
     .select(
-      "id, title, slug, image_url, thumbnail_url, location, photo_variants(price, sizes(name, label)), photo_categories(category_id)"
+      "id, title, slug, image_url, thumbnail_url, location, created_at, photo_variants(price, sizes(name, label)), photo_categories(category_id)"
     )
     .eq("is_published", true)
     .order("created_at", { ascending: false });
@@ -47,8 +47,21 @@ export default async function GalleryPage() {
     .eq("is_visible", true)
     .order("display_order", { ascending: true });
 
+  // Count photos per category + pick first photo as cover fallback
+  const photoCounts: Record<string, number> = {};
+  const firstPhotoPerCategory: Record<string, string> = {};
+  (photos || []).forEach((photo: any) => {
+    (photo.photo_categories || []).forEach((pc: any) => {
+      photoCounts[pc.category_id] = (photoCounts[pc.category_id] || 0) + 1;
+      if (!firstPhotoPerCategory[pc.category_id]) {
+        firstPhotoPerCategory[pc.category_id] =
+          photo.thumbnail_url || photo.image_url;
+      }
+    });
+  });
+
   // Transform photos for the gallery grid
-  const galleryPhotos: PhotoCardData[] = (photos || []).map((photo: any) => {
+  const galleryPhotos: GalleryPhoto[] = (photos || []).map((photo: any) => {
     const prices = (photo.photo_variants || []).map((v: any) => v.price);
     const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
     const categoryIds = (photo.photo_categories || []).map(
@@ -64,15 +77,21 @@ export default async function GalleryPage() {
       location: photo.location,
       minPrice,
       categoryIds,
+      createdAt: photo.created_at,
     };
   });
 
-  // Transform categories for filter tabs
-  const filterCategories = (categories || []).map((cat: any) => ({
-    id: cat.id,
-    name: cat.name,
-    slug: cat.slug,
-  }));
+  // Transform categories with cover images and photo counts
+  const filterCategories: GalleryCategory[] = (categories || []).map(
+    (cat: any) => ({
+      id: cat.id,
+      name: cat.name,
+      slug: cat.slug,
+      coverImageUrl: cat.cover_image_url || firstPhotoPerCategory[cat.id] || null,
+      description: cat.description,
+      photoCount: photoCounts[cat.id] || 0,
+    })
+  );
 
   const t = await getTranslations("gallery");
 
