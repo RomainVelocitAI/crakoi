@@ -1,7 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import { createServerClient } from "@/lib/supabase/server";
 import Image from "next/image";
-import { Plus, Pencil, Trash2, Camera } from "lucide-react";
+import { Plus, Camera } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
+import { StatusBadge } from "@/components/admin/ui/StatusBadge";
+import PhotoListActions from "@/components/admin/PhotoListActions";
+import { deletePhoto, togglePhotoPublished, togglePhotoHeader, togglePhotoFeatured } from "./actions";
 
 export async function generateMetadata() {
   const t = await getTranslations("admin");
@@ -22,6 +26,8 @@ export default async function AdminPhotosPage() {
       thumbnail_url,
       image_url,
       is_published,
+      is_header,
+      is_featured,
       created_at,
       photo_variants(
         price,
@@ -35,13 +41,16 @@ export default async function AdminPhotosPage() {
     <div>
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <h1 className="font-serif text-2xl font-semibold text-white">
+        <h1 className="font-serif text-2xl font-semibold text-text-primary">
           {t("photos")}
         </h1>
-        <button className="inline-flex items-center gap-2 px-4 py-2 bg-gold text-background text-sm font-medium rounded hover:bg-gold-light transition-colors">
+        <Link
+          href="/admin/photos/new"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-gold text-background text-sm font-medium rounded hover:bg-gold-light transition-colors"
+        >
           <Plus className="h-4 w-4" />
           {t("addPhoto")}
-        </button>
+        </Link>
       </div>
 
       {/* Table */}
@@ -96,7 +105,7 @@ export default async function AdminPhotosPage() {
                   return (
                     <tr
                       key={photo.id}
-                      className="border-b border-border/50 hover:bg-white/[0.02] transition-colors"
+                      className="border-b border-border/50 hover:bg-surface transition-colors"
                     >
                       {/* Thumbnail */}
                       <td className="px-5 py-3">
@@ -119,7 +128,12 @@ export default async function AdminPhotosPage() {
 
                       {/* Title */}
                       <td className="px-5 py-3">
-                        <p className="text-white font-medium">{photo.title}</p>
+                        <Link
+                          href={`/admin/photos/${photo.id}`}
+                          className="text-text-primary font-medium hover:text-gold transition-colors"
+                        >
+                          {photo.title}
+                        </Link>
                         <p className="text-xs text-text-muted mt-0.5">
                           {photo.slug}
                         </p>
@@ -127,15 +141,13 @@ export default async function AdminPhotosPage() {
 
                       {/* Published status */}
                       <td className="px-5 py-3">
-                        {photo.is_published ? (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-500 border border-green-500/20">
-                            {t("published")}
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-500/10 text-gray-400 border border-gray-500/20">
-                            {t("draft")}
-                          </span>
-                        )}
+                        <StatusBadge
+                          status={photo.is_published ? "published" : "draft"}
+                          labels={{
+                            published: t("published"),
+                            draft: t("draft"),
+                          }}
+                        />
                       </td>
 
                       {/* Price range */}
@@ -145,20 +157,16 @@ export default async function AdminPhotosPage() {
 
                       {/* Actions */}
                       <td className="px-5 py-3">
-                        <div className="flex items-center justify-end gap-2">
-                          <button
-                            className="p-1.5 text-text-muted hover:text-gold transition-colors rounded hover:bg-gold/10"
-                            title={t("edit")}
-                          >
-                            <Pencil className="h-4 w-4" />
-                          </button>
-                          <button
-                            className="p-1.5 text-text-muted hover:text-red-400 transition-colors rounded hover:bg-red-500/10"
-                            title={t("delete")}
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
-                        </div>
+                        <PhotoListActions
+                          photoId={photo.id}
+                          isPublished={photo.is_published}
+                          isHeader={photo.is_header}
+                          isFeatured={photo.is_featured}
+                          onDelete={deletePhoto}
+                          onTogglePublished={togglePhotoPublished}
+                          onToggleHeader={togglePhotoHeader}
+                          onToggleFeatured={togglePhotoFeatured}
+                        />
                       </td>
                     </tr>
                   );

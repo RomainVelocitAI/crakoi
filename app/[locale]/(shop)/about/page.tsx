@@ -46,7 +46,7 @@ export default async function AboutPage() {
             <span className="font-mono text-xs tracking-[0.4em] text-gold/70 uppercase mb-4 block">
               Le Photographe
             </span>
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white font-medium leading-tight">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-text-primary font-medium leading-tight">
               {t("title")}
             </h1>
             <p className="font-serif text-xl sm:text-2xl text-text-secondary/80 mt-4 italic">

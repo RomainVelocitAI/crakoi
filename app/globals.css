@@ -39,40 +39,6 @@
     --radius: 0.5rem;
   }
 
-  /* Dark mode */
-  .dark {
-    --color-background: 10 10 10;
-    --color-surface: 20 20 20;
-    --color-surface-light: 26 26 26;
-    --color-border: 38 38 38;
-    --color-gold: 212 175 55;
-    --color-gold-light: 229 199 107;
-    --color-gold-dark: 184 148 30;
-    --color-text-primary: 255 255 255;
-    --color-text-secondary: 163 163 163;
-    --color-text-muted: 115 115 115;
-
-    /* shadcn/ui variables */
-    --background: 0 0% 4%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 45 60% 52%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 10%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 45 60% 52%;
-  }
 
   * {
     @apply border-border;

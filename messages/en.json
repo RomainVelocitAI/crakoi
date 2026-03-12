@@ -257,6 +257,16 @@
     "noData": "No data to display.",
     "viewDetails": "View details",
     "thumbnail": "Image",
+    "settings": "Settings",
+    "activityLog": "Activity Log",
+    "headerPhotos": "Header",
+    "headerPhotosDescription": "Manage the order of photos displayed in the header carousel. Drag and drop to reorder.",
+    "noHeaderPhotos": "No header photos.",
+    "noHeaderPhotosHint": "Enable 'Header' on a photo for it to appear here.",
+    "highlightPhotos": "Highlights",
+    "highlightPhotosDescription": "Manage the order of featured photos on the homepage. Drag and drop to reorder.",
+    "noHighlightPhotos": "No featured photos.",
+    "noHighlightPhotosHint": "Enable 'Featured' on a photo for it to appear here.",
     "backToSite": "Back to site"
   },
   "footer": {

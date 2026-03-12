@@ -34,7 +34,7 @@ function StatCard({
         </div>
         <span className="text-sm text-text-muted">{label}</span>
       </div>
-      <p className="text-2xl font-semibold text-white">{value}</p>
+      <p className="text-2xl font-semibold text-text-primary">{value}</p>
     </div>
   );
 }
@@ -122,7 +122,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <div>
-      <h1 className="font-serif text-2xl font-semibold text-white mb-8">
+      <h1 className="font-serif text-2xl font-semibold text-text-primary mb-8">
         {t("dashboard")}
       </h1>
 
@@ -169,7 +169,7 @@ export default async function AdminDashboardPage() {
       {/* Recent orders */}
       <div className="bg-surface border border-border rounded-lg">
         <div className="px-5 py-4 border-b border-border">
-          <h2 className="font-serif text-lg font-medium text-white">
+          <h2 className="font-serif text-lg font-medium text-text-primary">
             {t("recentOrders")}
           </h2>
         </div>
@@ -220,12 +220,12 @@ export default async function AdminDashboardPage() {
                   return (
                     <tr
                       key={order.id}
-                      className="border-b border-border/50 hover:bg-white/[0.02] transition-colors"
+                      className="border-b border-border/50 hover:bg-surface transition-colors"
                     >
                       <td className="px-5 py-3">
                         <Link
                           href={`/admin/orders`}
-                          className="text-white hover:text-gold transition-colors"
+                          className="text-text-primary hover:text-gold transition-colors"
                         >
                           {order.order_number}
                         </Link>
@@ -237,7 +237,7 @@ export default async function AdminDashboardPage() {
                       <td className="px-5 py-3">
                         <StatusBadge status={order.status} />
                       </td>
-                      <td className="px-5 py-3 text-right text-white">
+                      <td className="px-5 py-3 text-right text-text-primary">
                         {Number(order.total).toFixed(2)} &euro;
                       </td>
                     </tr>

@@ -10,21 +10,21 @@ import ReassuranceBanner from "@/components/homepage/ReassuranceBanner";
 export default async function HomePage() {
   const supabase = await createServerClient();
 
-  // Fetch featured photos for hero + card stack
-  const { data: featuredPhotos } = await supabase
+  // Fetch header photos for hero carousel
+  const { data: headerPhotos } = await supabase
     .from("photos")
-    .select("id, title, slug, image_url, thumbnail_url, location, is_featured, featured_order, photo_variants(price, sizes(name, label))")
+    .select("id, title, slug, image_url, thumbnail_url, location")
     .eq("is_published", true)
-    .eq("is_featured", true)
-    .order("featured_order", { ascending: true });
+    .eq("is_header", true)
+    .order("header_order", { ascending: true });
 
-  // Fetch all published photos for the card stack (with min price)
-  const { data: allPhotos } = await supabase
+  // Fetch featured photos for "Tirages les plus appréciés"
+  const { data: featuredPhotos } = await supabase
     .from("photos")
     .select("id, title, slug, image_url, thumbnail_url, location, photo_variants(price, sizes(name, label))")
     .eq("is_published", true)
-    .order("created_at", { ascending: false })
-    .limit(10);
+    .eq("is_featured", true)
+    .order("featured_order", { ascending: true });
 
   // Fetch visible categories
   const { data: categories } = await supabase
@@ -33,8 +33,8 @@ export default async function HomePage() {
     .eq("is_visible", true)
     .order("display_order", { ascending: true });
 
-  // Transform data for hero slides
-  const heroSlides = (featuredPhotos || []).map((photo) => ({
+  // Transform data for hero slides (from is_header photos)
+  const heroSlides = (headerPhotos || []).map((photo) => ({
     id: photo.id,
     title: photo.title,
     location: photo.location || "La Réunion",
@@ -42,8 +42,8 @@ export default async function HomePage() {
     href: `/photos/${photo.slug}`,
   }));
 
-  // Transform data for featured photo cards
-  const featuredCards = (allPhotos || []).map((photo) => {
+  // Transform data for featured photo cards (from is_featured photos)
+  const featuredCards = (featuredPhotos || []).map((photo) => {
     const prices = (photo.photo_variants || []).map((v: any) => v.price);
     const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
     return {
@@ -85,15 +85,15 @@ export default async function HomePage() {
   }));
 
   // Pick first photo for the mockup preview
-  const mockupPhoto = allPhotos?.[0];
+  const mockupPhoto = allPublishedPhotos?.[0] as any;
   const mockupPhotoUrl = mockupPhoto?.image_url || "";
 
   return (
     <>
-      <HeroSection slides={heroSlides.length > 0 ? heroSlides : undefined} />
+      {heroSlides.length > 0 && <HeroSection slides={heroSlides} />}
       <StorytellingSection />
       <CategoriesSection categories={categoryCards.length > 0 ? categoryCards : undefined} />
-      <FeaturedPhotosSection photos={featuredCards.length > 0 ? featuredCards : undefined} />
+      {featuredCards.length > 0 && <FeaturedPhotosSection photos={featuredCards} />}
       <MockupPreviewSection photoUrl={mockupPhotoUrl || undefined} />
       <BookSection />
       <ReassuranceBanner />

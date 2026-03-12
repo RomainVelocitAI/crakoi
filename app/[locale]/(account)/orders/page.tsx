@@ -67,14 +67,14 @@ export default async function OrdersPage() {
       {/* Back link */}
       <Link
         href="/account"
-        className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-white transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-text-primary transition-colors mb-8"
       >
         <ArrowLeft className="h-4 w-4" />
         {t("backToAccount")}
       </Link>
 
       {/* Page header */}
-      <h1 className="font-serif text-3xl font-semibold text-white mb-10">
+      <h1 className="font-serif text-3xl font-semibold text-text-primary mb-10">
         {t("orders")}
       </h1>
 
@@ -111,7 +111,7 @@ export default async function OrdersPage() {
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <p className="text-white font-medium">
+                    <p className="text-text-primary font-medium">
                       {order.order_number}
                     </p>
                     <p className="text-sm text-text-muted mt-0.5">
@@ -121,7 +121,7 @@ export default async function OrdersPage() {
 
                   <div className="flex items-center gap-4">
                     <StatusBadge status={order.status} />
-                    <p className="text-white font-medium">
+                    <p className="text-text-primary font-medium">
                       {Number(order.total).toFixed(2)} &euro;
                     </p>
                   </div>

@@ -1,39 +1,45 @@
 import { getTranslations } from "next-intl/server";
 import { createServerClient } from "@/lib/supabase/server";
 import { ShoppingBag } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
+import { StatusBadge } from "@/components/admin/ui/StatusBadge";
+
+const STATUS_FILTERS = [
+  { value: "all", label: "Toutes" },
+  { value: "pending", label: "En attente" },
+  { value: "paid", label: "Payées" },
+  { value: "processing", label: "En préparation" },
+  { value: "shipped", label: "Expédiées" },
+  { value: "delivered", label: "Livrées" },
+];
+
+const STATUS_LABELS: Record<string, string> = {
+  pending: "En attente",
+  paid: "Payée",
+  processing: "En préparation",
+  shipped: "Expédiée",
+  delivered: "Livrée",
+  cancelled: "Annulée",
+  refunded: "Remboursée",
+};
+
+interface AdminOrdersPageProps {
+  searchParams: Promise<{ status?: string }>;
+}
 
 export async function generateMetadata() {
   const t = await getTranslations("admin");
   return { title: t("orders") };
 }
 
-function StatusBadge({ status }: { status: string }) {
-  const colors: Record<string, string> = {
-    pending: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
-    paid: "bg-green-500/10 text-green-500 border-green-500/20",
-    processing: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    shipped: "bg-purple-500/10 text-purple-500 border-purple-500/20",
-    delivered: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
-    cancelled: "bg-red-500/10 text-red-500 border-red-500/20",
-    refunded: "bg-gray-500/10 text-gray-400 border-gray-500/20",
-  };
-
-  return (
-    <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-        colors[status] || colors.pending
-      }`}
-    >
-      {status}
-    </span>
-  );
-}
-
-export default async function AdminOrdersPage() {
+export default async function AdminOrdersPage({
+  searchParams,
+}: AdminOrdersPageProps) {
+  const { status: statusFilter } = await searchParams;
   const supabase = await createServerClient();
   const t = await getTranslations("admin");
 
-  const { data: orders } = await supabase
+  let query = supabase
     .from("orders")
     .select(
       `
@@ -55,12 +61,41 @@ export default async function AdminOrdersPage() {
     )
     .order("created_at", { ascending: false });
 
+  if (statusFilter && statusFilter !== "all") {
+    query = query.eq("status", statusFilter);
+  }
+
+  const { data: orders } = await query;
+
+  const activeFilter = statusFilter || "all";
+
   return (
     <div>
       {/* Header */}
-      <h1 className="font-serif text-2xl font-semibold text-white mb-8">
+      <h1 className="font-serif text-2xl font-semibold text-text-primary mb-6">
         {t("orders")}
       </h1>
+
+      {/* Status filter tabs */}
+      <div className="flex items-center gap-1 mb-6 overflow-x-auto pb-1">
+        {STATUS_FILTERS.map((filter) => (
+          <Link
+            key={filter.value}
+            href={
+              filter.value === "all"
+                ? "/admin/orders"
+                : `/admin/orders?status=${filter.value}`
+            }
+            className={`px-3 py-1.5 text-sm rounded-md whitespace-nowrap transition-colors ${
+              activeFilter === filter.value
+                ? "bg-gold/10 text-gold border border-gold/20"
+                : "text-text-muted hover:text-text-primary hover:bg-surface border border-transparent"
+            }`}
+          >
+            {filter.label}
+          </Link>
+        ))}
+      </div>
 
       {/* Table */}
       <div className="bg-surface border border-border rounded-lg overflow-hidden">
@@ -112,16 +147,21 @@ export default async function AdminOrdersPage() {
                   return (
                     <tr
                       key={order.id}
-                      className="border-b border-border/50 hover:bg-white/[0.02] transition-colors"
+                      className="border-b border-border/50 hover:bg-surface transition-colors"
                     >
                       <td className="px-5 py-3">
-                        <span className="text-white font-medium">
+                        <Link
+                          href={`/admin/orders/${order.id}`}
+                          className="text-text-primary font-medium hover:text-gold transition-colors"
+                        >
                           {order.order_number}
-                        </span>
+                        </Link>
                       </td>
                       <td className="px-5 py-3">
                         {customerName && (
-                          <p className="text-white text-sm">{customerName}</p>
+                          <p className="text-text-primary text-sm">
+                            {customerName}
+                          </p>
                         )}
                         <p className="text-text-muted text-xs">
                           {customerEmail}
@@ -129,9 +169,12 @@ export default async function AdminOrdersPage() {
                       </td>
                       <td className="px-5 py-3 text-text-muted">{date}</td>
                       <td className="px-5 py-3">
-                        <StatusBadge status={order.status} />
+                        <StatusBadge
+                          status={order.status}
+                          labels={STATUS_LABELS}
+                        />
                       </td>
-                      <td className="px-5 py-3 text-right text-white font-medium">
+                      <td className="px-5 py-3 text-right text-text-primary font-medium">
                         {Number(order.total).toFixed(2)} &euro;
                       </td>
                     </tr>

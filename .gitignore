@@ -46,3 +46,6 @@ next-env.d.ts
 
 # Playwright MCP logs
 .playwright-mcp/
+
+# Client instructions
+CRAKOI_ADMIN_PANEL_INSTRUCTIONS.md

@@ -19,30 +19,30 @@ interface Category {
 const DEMO_CATEGORIES: Category[] = [
   {
     id: "1",
-    name: "Sous l'eau",
-    slug: "sous-leau",
-    description: "Baleines, dauphins et vie marine",
+    name: "Afrique",
+    slug: "afrique",
+    description: "Paysages et faune du continent africain",
     coverImageUrl:
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
-    photoCount: 24,
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    photoCount: 150,
   },
   {
     id: "2",
-    name: "Sur terre",
-    slug: "sur-terre",
-    description: "Paysages et nature de La Réunion",
+    name: "Baleines",
+    slug: "baleines",
+    description: "Rencontres majestueuses avec les baleines à bosse",
     coverImageUrl:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-    photoCount: 18,
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
+    photoCount: 40,
   },
   {
     id: "3",
-    name: "Aérien",
-    slug: "aerien",
-    description: "La Réunion vue du ciel",
+    name: "Amérique du Sud",
+    slug: "amerique-du-sud",
+    description: "Voyages et découvertes sud-américaines",
     coverImageUrl:
       "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=80",
-    photoCount: 12,
+    photoCount: 36,
   },
 ];
 
@@ -57,7 +57,7 @@ function CategoryCard({
     <Link href="/gallery">
       <motion.div
         className="group relative overflow-hidden cursor-pointer"
-        style={{ aspectRatio: index === 0 ? "3/4" : "4/5" }}
+        style={{ aspectRatio: "3/4" }}
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-15%" }}
@@ -133,15 +133,10 @@ export default function CategoriesSection({
           </p>
         </div>
 
-        {/* Grid: first card larger, others smaller */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {categories.map((cat, i) => (
-            <div
-              key={cat.id}
-              className={cn(
-                i === 0 && "md:col-span-2 lg:col-span-1 lg:row-span-2"
-              )}
-            >
+            <div key={cat.id}>
               <CategoryCard category={cat} index={i} />
             </div>
           ))}

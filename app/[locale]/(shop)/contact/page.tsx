@@ -53,7 +53,7 @@ export default function ContactPage() {
           <span className="font-mono text-xs tracking-[0.4em] text-gold/60 uppercase mb-4 block">
             {t("title")}
           </span>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-medium leading-tight mb-6">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-text-primary font-medium leading-tight mb-6">
             {t("title")}
           </h1>
           <p className="font-sans text-lg text-text-secondary max-w-2xl">
@@ -67,7 +67,7 @@ export default function ContactPage() {
             <FadeIn delay={0.1}>
               <div className="space-y-8">
                 {/* Info title */}
-                <h2 className="font-serif text-xl text-white font-medium">
+                <h2 className="font-serif text-xl text-text-primary font-medium">
                   {t("infoTitle")}
                 </h2>
 
@@ -169,7 +169,7 @@ export default function ContactPage() {
                       <div className="w-16 h-16 rounded-full bg-green-900/20 flex items-center justify-center mb-6">
                         <CheckCircle className="w-8 h-8 text-green-400" />
                       </div>
-                      <h3 className="font-serif text-2xl text-white font-medium mb-3">
+                      <h3 className="font-serif text-2xl text-text-primary font-medium mb-3">
                         {t("sent")}
                       </h3>
                       <p className="font-sans text-text-secondary mb-8 max-w-sm">

@@ -63,7 +63,6 @@ export default function HeroSection({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [textVisible, setTextVisible] = useState(true);
   const progressInterval = useRef<ReturnType<typeof setInterval>>();
   const autoAdvanceTimeout = useRef<ReturnType<typeof setTimeout>>();
 
@@ -74,13 +73,11 @@ export default function HeroSection({
     (index: number) => {
       if (isTransitioning || index === currentIndex) return;
       setIsTransitioning(true);
-      setTextVisible(false);
 
       setTimeout(() => {
         setCurrentIndex(index);
         setProgress(0);
         setIsTransitioning(false);
-        setTextVisible(true);
       }, 450);
     },
     [currentIndex, isTransitioning]
@@ -112,8 +109,6 @@ export default function HeroSection({
       clearTimeout(autoAdvanceTimeout.current);
     };
   }, [currentIndex, total, goToSlide]);
-
-  const currentSlide = slides[currentIndex];
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black">
@@ -162,56 +157,6 @@ export default function HeroSection({
             {String(total).padStart(2, "0")}
           </span>
         </div>
-      </div>
-
-      {/* Main Content — center */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6">
-        {/* Title */}
-        <div
-          className="overflow-hidden mb-4 transition-all duration-500 ease-out"
-          style={{
-            opacity: textVisible ? 1 : 0,
-            transform: textVisible ? "translateY(0)" : "translateY(-20px)",
-          }}
-        >
-          <h1
-            className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white text-center leading-[0.9] tracking-tight"
-          >
-            {currentSlide.title}
-          </h1>
-        </div>
-
-        {/* Location */}
-        <div
-          className="mb-10 transition-all duration-500 ease-out delay-100"
-          style={{
-            opacity: textVisible ? 1 : 0,
-            transform: textVisible ? "translateY(0)" : "translateY(-10px)",
-          }}
-        >
-          <p className="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-gold/80">
-            {currentSlide.location}
-          </p>
-        </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-        >
-          <a
-            href={currentSlide.href}
-            className="group relative inline-flex items-center gap-3 border border-white/20 hover:border-gold/60 px-8 py-3 text-sm font-sans uppercase tracking-[0.2em] text-white/80 hover:text-gold transition-all duration-500 backdrop-blur-sm"
-          >
-            <span>Découvrir</span>
-            <span className="block w-0 group-hover:w-6 overflow-hidden transition-all duration-500">
-              <svg width="24" height="12" viewBox="0 0 24 12" fill="none" className="text-gold">
-                <path d="M0 6H22M22 6L17 1M22 6L17 11" stroke="currentColor" strokeWidth="1" />
-              </svg>
-            </span>
-          </a>
-        </motion.div>
       </div>
 
       {/* Navigation Dots — bottom */}

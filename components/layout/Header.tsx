@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
-import { ShoppingBag, Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { ShoppingBag, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { useCart } from "@/lib/cart/CartContext";
 
@@ -15,16 +14,10 @@ interface HeaderProps {
 export default function Header({ isTransparent = false }: HeaderProps) {
   const t = useTranslations("nav");
   const { itemCount } = useCart();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,10 +45,6 @@ export default function Header({ isTransparent = false }: HeaderProps) {
     { href: "/about", label: t("about") },
     { href: "/contact", label: t("contact") },
   ];
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   return (
     <header
@@ -92,21 +81,6 @@ export default function Header({ isTransparent = false }: HeaderProps) {
 
           {/* Right side: Theme toggle + Cart + Mobile menu */}
           <div className="flex items-center gap-4">
-            {/* Theme toggle */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="text-text-secondary hover:text-text-primary transition-colors"
-                aria-label={theme === "dark" ? "Mode jour" : "Mode nuit"}
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
-            )}
-
             <Link
               href="/cart"
               className="relative text-text-secondary hover:text-text-primary transition-colors"

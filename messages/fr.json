@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Crackoï — Tirages photo d'art par Eric Lamblin",
-    "description": "Découvrez les tirages photo d'art d'Eric Lamblin, photographe sous-marin à La Réunion. Baleines, dauphins, paysages — impressions qualité musée."
+    "description": "Découvrez les tirages photo d'art d'Eric Lamblin, photographe sous-marin à La Réunion. Baleines, faune marine, paysages — impressions qualité musée."
   },
   "nav": {
     "home": "Accueil",
@@ -257,6 +257,16 @@
     "noData": "Aucune donnée à afficher.",
     "viewDetails": "Voir le détail",
     "thumbnail": "Image",
+    "settings": "Paramètres",
+    "activityLog": "Journal d'activité",
+    "headerPhotos": "En-tête",
+    "headerPhotosDescription": "Gérez l'ordre des photos affichées dans le carousel d'en-tête. Glissez-déposez pour réorganiser.",
+    "noHeaderPhotos": "Aucune photo d'en-tête.",
+    "noHeaderPhotosHint": "Activez 'En-tête' sur une photo pour qu'elle apparaisse ici.",
+    "highlightPhotos": "Highlights",
+    "highlightPhotosDescription": "Gérez l'ordre des photos mises en avant sur la page d'accueil. Glissez-déposez pour réorganiser.",
+    "noHighlightPhotos": "Aucune photo mise en avant.",
+    "noHighlightPhotosHint": "Activez 'Mise en avant' sur une photo pour qu'elle apparaisse ici.",
     "backToSite": "Retour au site"
   },
   "footer": {

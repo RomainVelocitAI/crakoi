@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/cn";
 import PhotoCard, { type PhotoCardData } from "./PhotoCard";
+import Lightbox, { type LightboxPhoto } from "./Lightbox";
+import { AnimatePresence } from "framer-motion";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -33,28 +35,25 @@ interface GalleryGridProps {
 
 const SPECIES_KW = [
   "baleine",
-  "cachalot",
-  "dauphin",
+  "whale",
+  "cétacé",
+  "cetace",
+  "faune",
+  "marine",
   "tortue",
   "requin",
-  "whale",
-  "dolphin",
   "turtle",
   "shark",
-  "sperm",
 ];
 const DESTINATION_KW = [
   "afrique",
   "africa",
-  "madagascar",
-  "réunion",
-  "reunion",
-  "mayotte",
-  "rodrigues",
-  "maurice",
-  "comores",
-  "île",
-  "island",
+  "asie",
+  "asia",
+  "amérique",
+  "america",
+  "ailleurs",
+  "elsewhere",
 ];
 
 type CatGroup = "species" | "destinations" | "style";
@@ -69,13 +68,13 @@ function getCatGroup(name: string): CatGroup {
 function getCatEmoji(name: string): string {
   const l = name.toLowerCase();
   if (l.includes("baleine") || l.includes("whale")) return "🐋";
-  if (l.includes("cachalot") || l.includes("sperm")) return "🐳";
-  if (l.includes("dauphin") || l.includes("dolphin")) return "🐬";
+  if (l.includes("cétacé") || l.includes("cetace")) return "🐳";
   if (l.includes("tortue") || l.includes("turtle")) return "🐢";
   if (l.includes("requin") || l.includes("shark")) return "🦈";
   if (l.includes("afrique") || l.includes("africa")) return "🌍";
-  if (l.includes("madagascar")) return "🏝️";
-  if (l.includes("réunion") || l.includes("reunion")) return "🌋";
+  if (l.includes("asie") || l.includes("asia")) return "🌏";
+  if (l.includes("amérique") || l.includes("america")) return "🌎";
+  if (l.includes("ailleurs") || l.includes("elsewhere")) return "🌐";
   if (l.includes("noir") || l.includes("black")) return "⬛";
   if (l.includes("faune") || l.includes("marine")) return "🐠";
   if (l.includes("paysage") || l.includes("landscape")) return "🏔️";
@@ -217,6 +216,7 @@ export default function GalleryGrid({
   const [sortBy, setSortBy] = useState<SortOption>("recent");
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -347,12 +347,32 @@ export default function GalleryGrid({
   // No-filters mode (backwards compat for homepage, etc.)
   // -------------------------------------------------------------------------
   if (!showFilters) {
+    const lightboxPhotos: LightboxPhoto[] = photos.map((p) => ({
+      id: p.id,
+      title: p.title,
+      slug: p.slug,
+      imageUrl: p.imageUrl,
+      location: p.location,
+    }));
+
     return (
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
-        {photos.map((photo) => (
-          <PhotoCard key={photo.id} photo={photo} />
-        ))}
-      </div>
+      <>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+          {photos.map((photo, i) => (
+            <PhotoCard key={photo.id} photo={photo} onClick={() => setLightboxIndex(i)} />
+          ))}
+        </div>
+        <AnimatePresence>
+          {lightboxIndex !== null && (
+            <Lightbox
+              photos={lightboxPhotos}
+              currentIndex={lightboxIndex}
+              onClose={() => setLightboxIndex(null)}
+              onNavigate={setLightboxIndex}
+            />
+          )}
+        </AnimatePresence>
+      </>
     );
   }
 
@@ -381,7 +401,7 @@ export default function GalleryGrid({
             return (
               <label
                 key={cat.id}
-                className="flex items-center gap-3 py-2 px-1 rounded-lg cursor-pointer group/cb hover:bg-white/[0.03] transition-colors"
+                className="flex items-center gap-3 py-2 px-1 rounded-lg cursor-pointer group/cb hover:bg-surface transition-colors"
               >
                 {/* Custom checkbox */}
                 <span
@@ -477,7 +497,7 @@ export default function GalleryGrid({
             clearFilters();
             setMobileSidebarOpen(false);
           }}
-          className="w-full rounded-lg border border-border px-4 py-2.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white hover:border-text-muted transition-colors"
+          className="w-full rounded-lg border border-border px-4 py-2.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-text-primary hover:border-text-muted transition-colors"
         >
           {t("clearFilters")}
         </button>
@@ -504,7 +524,7 @@ export default function GalleryGrid({
             {canScrollLeft && (
               <button
                 onClick={() => scrollCarousel("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-text-secondary hover:text-white hover:border-border transition-all shadow-lg"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-text-secondary hover:text-text-primary hover:border-border transition-all shadow-lg"
                 aria-label="Scroll left"
               >
                 <ChevronLeftIcon />
@@ -515,7 +535,7 @@ export default function GalleryGrid({
             {canScrollRight && (
               <button
                 onClick={() => scrollCarousel("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-text-secondary hover:text-white hover:border-border transition-all shadow-lg"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-text-secondary hover:text-text-primary hover:border-border transition-all shadow-lg"
                 aria-label="Scroll right"
               >
                 <ChevronRightIcon />
@@ -646,7 +666,7 @@ export default function GalleryGrid({
                 "hidden md:flex items-center gap-2 shrink-0 rounded-lg border px-3 py-2 text-xs font-mono uppercase tracking-wider transition-all duration-200",
                 sidebarOpen
                   ? "border-gold/40 bg-gold/10 text-gold"
-                  : "border-border text-text-secondary hover:text-white hover:border-text-muted"
+                  : "border-border text-text-secondary hover:text-text-primary hover:border-text-muted"
               )}
               aria-label={t("advancedFilters")}
               aria-expanded={sidebarOpen}
@@ -706,7 +726,7 @@ export default function GalleryGrid({
               {hasActiveFilters && (
                 <button
                   onClick={clearFilters}
-                  className="shrink-0 text-[10px] font-mono text-text-muted hover:text-white uppercase tracking-wider transition-colors ml-1"
+                  className="shrink-0 text-[10px] font-mono text-text-muted hover:text-text-primary uppercase tracking-wider transition-colors ml-1"
                 >
                   {t("clearFilters")}
                 </button>
@@ -758,8 +778,8 @@ export default function GalleryGrid({
                   : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
               )}
             >
-              {filteredPhotos.map((photo) => (
-                <PhotoCard key={photo.id} photo={photo} />
+              {filteredPhotos.map((photo, i) => (
+                <PhotoCard key={photo.id} photo={photo} onClick={() => setLightboxIndex(i)} />
               ))}
             </div>
           ) : (
@@ -810,7 +830,7 @@ export default function GalleryGrid({
           </span>
           <button
             onClick={() => setMobileSidebarOpen(false)}
-            className="text-text-muted hover:text-white transition-colors p-1"
+            className="text-text-muted hover:text-text-primary transition-colors p-1"
             aria-label="Close"
           >
             <XIcon className="w-4 h-4" />
@@ -819,6 +839,24 @@ export default function GalleryGrid({
         {/* Panel body */}
         <div className="p-5">{sidebarContent}</div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <Lightbox
+            photos={filteredPhotos.map((p) => ({
+              id: p.id,
+              title: p.title,
+              slug: p.slug,
+              imageUrl: p.imageUrl,
+              location: p.location,
+            }))}
+            currentIndex={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+            onNavigate={setLightboxIndex}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

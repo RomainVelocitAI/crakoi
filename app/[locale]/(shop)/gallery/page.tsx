@@ -103,7 +103,7 @@ export default async function GalleryPage() {
           <span className="font-mono text-xs tracking-[0.4em] text-gold/60 uppercase mb-4 block">
             Collection
           </span>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-medium mb-4">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-text-primary font-medium mb-4">
             {t("title")}
           </h1>
           <p className="font-sans text-base text-text-secondary max-w-2xl mx-auto">

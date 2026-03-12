@@ -73,7 +73,7 @@ export default async function LocaleLayout({
       <body
         className={`${serif.variable} ${sans.variable} ${mono.variable} bg-background text-text-primary antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false}>
           <NextIntlClientProvider messages={messages}>
             <CartProvider>
               {children}

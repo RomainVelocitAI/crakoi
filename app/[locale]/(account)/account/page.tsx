@@ -49,7 +49,7 @@ export default async function AccountPage() {
       {/* Page header */}
       <div className="flex items-center justify-between mb-10">
         <div>
-          <h1 className="font-serif text-3xl font-semibold text-white">
+          <h1 className="font-serif text-3xl font-semibold text-text-primary">
             {t("title")}
           </h1>
           <p className="mt-1 text-sm text-text-muted">
@@ -61,7 +61,7 @@ export default async function AccountPage() {
 
       {/* Profile card */}
       <div className="bg-surface border border-border rounded-lg p-6 mb-6">
-        <h2 className="font-serif text-xl font-medium text-white mb-6 flex items-center gap-2">
+        <h2 className="font-serif text-xl font-medium text-text-primary mb-6 flex items-center gap-2">
           <User className="h-5 w-5 text-gold" />
           {t("profile")}
         </h2>
@@ -75,7 +75,7 @@ export default async function AccountPage() {
                 <p className="text-xs text-text-muted uppercase tracking-wider mb-0.5">
                   {t("name")}
                 </p>
-                <p className="text-white">{fullName}</p>
+                <p className="text-text-primary">{fullName}</p>
               </div>
             </div>
           )}
@@ -87,7 +87,7 @@ export default async function AccountPage() {
               <p className="text-xs text-text-muted uppercase tracking-wider mb-0.5">
                 {t("email")}
               </p>
-              <p className="text-white">{user.email}</p>
+              <p className="text-text-primary">{user.email}</p>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export default async function AccountPage() {
                 <p className="text-xs text-text-muted uppercase tracking-wider mb-0.5">
                   {t("phone")}
                 </p>
-                <p className="text-white">{profile.phone}</p>
+                <p className="text-text-primary">{profile.phone}</p>
               </div>
             </div>
           )}
@@ -113,7 +113,7 @@ export default async function AccountPage() {
                   {t("address")}
                 </p>
                 {addressParts.map((line, i) => (
-                  <p key={i} className="text-white">
+                  <p key={i} className="text-text-primary">
                     {line}
                   </p>
                 ))}
@@ -130,7 +130,7 @@ export default async function AccountPage() {
       >
         <div className="flex items-center gap-3">
           <ShoppingBag className="h-5 w-5 text-gold" />
-          <span className="font-serif text-lg text-white">
+          <span className="font-serif text-lg text-text-primary">
             {t("orders")}
           </span>
         </div>
