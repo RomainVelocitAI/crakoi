@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     const supabase = createClient();
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({
+    const { data, error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -32,7 +32,18 @@ export default function LoginPage() {
       return;
     }
 
-    router.push("/account");
+    // Check if user is admin to redirect appropriately
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", data.user.id)
+      .single();
+
+    if (profile?.role === "admin") {
+      router.push("/admin");
+    } else {
+      router.push("/");
+    }
   }
 
   return (
